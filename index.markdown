@@ -9,7 +9,7 @@ title: Home
 <div class="project-card">
   <figure>
     <a href="/projects/red-kite/">
-      <img src="/assets/images/red-kites-timeline.png" alt="Timeline of red kite sightings across the UK, 1988–2022">
+      <img src="/assets/images/red-kites-preview.png" alt="Preview of the red kite interactive map">
     </a>
   </figure>
   <div class="project-text">
