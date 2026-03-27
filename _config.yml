@@ -1,0 +1,9 @@
+title: Invoke the Machine Spirit
+description: Projects and writing.
+baseurl: ""
+url: ""
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title and page.title != "Home" %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tufte-css@1.8.0/tufte.css"/>
+  <style>
+    body { padding-top: 0; }
+
+    header.site-header {
+      width: 87.5%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem 0 1.5rem;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+    header.site-header .site-title {
+      font-family: et-book, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
+      font-size: 1.4rem;
+      font-style: italic;
+      color: #111;
+      text-decoration: none;
+    }
+    header.site-header nav a {
+      font-family: et-book, Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
+      font-size: 1rem;
+      color: #111;
+      text-decoration: none;
+      margin-left: 2rem;
+    }
+    header.site-header nav a:hover { text-decoration: underline; }
+
+    article { padding-top: 2rem; }
+
+    /* Project cards on home page */
+    .project-card {
+      display: flex;
+      gap: 3rem;
+      margin-bottom: 4rem;
+      align-items: flex-start;
+    }
+    .project-card figure {
+      flex: 0 0 auto;
+      width: 180px;
+      margin: 0;
+    }
+    .project-card figure img {
+      width: 100%;
+      display: block;
+      border: 1px solid #ddd;
+    }
+    .project-card .project-text { flex: 1; }
+    .project-card h2 {
+      margin-top: 0;
+      font-size: 1.5rem;
+    }
+    .project-card p { margin-top: 0.5rem; }
+    .project-card a.project-link {
+      font-size: 0.95rem;
+      color: #111;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-title" href="/">{{ site.title }}</a>
+    <nav>
+      <a href="/blog/">Blog</a>
+    </nav>
+  </header>
+  <article>
+    {{ content }}
+  </article>
+</body>
+</html>
