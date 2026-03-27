@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #1a1a2e;
+      --bg-card:   #16213e;
+      --border:    #2a2a4a;
+      --accent:    #e94560;
+      --accent-lo: rgba(233,69,96,0.15);
+      --text:      #eee;
+      --muted:     #999;
+      --link:      #e94560;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    /* ── Header ─────────────────────────────────────────── */
+    header {
+      background: linear-gradient(135deg, #16213e, #1a1a2e);
+      padding: 1.25rem 2.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+    header a.site-title {
+      font-size: 1rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    header a.site-title:hover { color: var(--text); }
+
+    /* ── Hero image ──────────────────────────────────────── */
+    .hero {
+      width: 100%;
+      background: #111122;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .hero img {
+      display: block;
+      width: 100%;
+      max-height: 480px;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    /* ── Main content container ──────────────────────────── */
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+
+    /* ── Project header ──────────────────────────────────── */
+    .project-kicker {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      background: var(--accent-lo);
+      border: 1px solid rgba(233,69,96,0.3);
+      border-radius: 20px;
+      padding: 0.25rem 0.75rem;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .intro {
+      font-size: 1.05rem;
+      color: #ccc;
+      max-width: 680px;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+
+    /* ── Explore cards ───────────────────────────────────── */
+    .explore-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 4rem;
+    }
+    .explore-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .explore-card:hover {
+      border-color: var(--accent);
+      background: #1e1e38;
+    }
+    .explore-card .card-icon {
+      font-size: 1.4rem;
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+    .explore-card .card-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+    }
+    .explore-card .card-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+    .explore-card .card-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .explore-card .card-desc p { margin: 0; }
+    .explore-card .card-arrow {
+      margin-top: auto;
+      padding-top: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--accent);
+    }
+
+    /* ── Section headings ────────────────────────────────── */
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── Method steps ────────────────────────────────────── */
+    .method-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 2.5rem 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+    .step-num {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background: var(--accent-lo);
+      border: 1px solid rgba(233,69,96,0.4);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-body h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+    .step-body p {
+      font-size: 0.87rem;
+      color: #bbb;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .step-body a {
+      color: var(--link);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .step-body a:hover { color: #ff6b6b; }
+
+    /* ── Tech pills ──────────────────────────────────────── */
+    .tech-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 4rem;
+    }
+    .tech-pill {
+      font-size: 0.78rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 0.2rem 0.75rem;
+      color: #ccc;
+    }
+
+    /* ── Data attribution ────────────────────────────────── */
+    .attr-intro {
+      font-size: 0.85rem;
+      color: #bbb;
+      margin-bottom: 1.25rem;
+      line-height: 1.6;
+    }
+    .attr-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 4rem;
+    }
+    .attr-list li {
+      font-size: 0.8rem;
+      color: #888;
+      line-height: 1.5;
+      padding-left: 1rem;
+      border-left: 2px solid var(--border);
+    }
+    .attr-list a {
+      color: var(--link);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .attr-list a:hover { color: #ff6b6b; }
+
+    /* ── Responsive ──────────────────────────────────────── */
+    @media (max-width: 600px) {
+      h1 { font-size: 1.8rem; }
+      header { padding: 1rem 1.25rem; }
+      main { padding: 2rem 1.25rem 4rem; }
+      .hero img { max-height: 260px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="site-title" href="/">{{ site.title }}</a>
+  </header>
+
+  {% if page.hero_image %}
+  <div class="hero">
+    <img src="{{ page.hero_image }}" alt="{{ page.hero_alt | default: '' }}">
+  </div>
+  {% endif %}
+
+  <main>
+
+    {% if page.kicker %}<span class="project-kicker">{{ page.kicker }}</span>{% endif %}
+    <h1>{{ page.title }}</h1>
+    {% if page.intro %}<p class="intro">{{ page.intro }}</p>{% endif %}
+
+    {% if page.cards %}
+    <div class="explore-grid">
+      {% for card in page.cards %}
+      <a class="explore-card" href="{{ card.href }}">
+        <div class="card-icon">{{ card.icon }}</div>
+        <div class="card-label">{{ card.label }}</div>
+        <div class="card-title">{{ card.title }}</div>
+        <div class="card-desc">{{ card.desc | markdownify }}</div>
+        <div class="card-arrow">{{ card.arrow }} &rarr;</div>
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if page.steps %}
+    <h2>How I built this</h2>
+    <div class="method-steps">
+      {% for step in page.steps %}
+      <div class="step">
+        <div class="step-num">{{ forloop.index }}</div>
+        <div class="step-body">
+          <h3>{{ step.title }}</h3>
+          {{ step.body | markdownify }}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if page.pills %}
+    <div class="tech-row">
+      {% for pill in page.pills %}
+      <span class="tech-pill">{{ pill }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {{ content }}
+
+    {% if page.attribution %}
+    <h2>Data attribution</h2>
+    {% if page.attribution_intro %}<p class="attr-intro">{{ page.attribution_intro }}</p>{% endif %}
+    <ul class="attr-list">
+      {% for item in page.attribution %}
+      <li>{{ item.name }}
+        <a href="{{ item.url }}">{{ item.id }}</a>{% if item.licence %} &mdash; {{ item.licence }}{% endif %}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+  </main>
+
+</body>
+</html>
